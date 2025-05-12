@@ -1,0 +1,29 @@
+<mat-card class="chat-container">
+  <mat-card-title class="chat-tittle">Sala de Chat PorwerP</mat-card-title>
+  <mat-card-header class="chat-header">
+    <div mat-card-avatar class="user-avatar" [ngStyle]="{ 'background-image': 'url(' + currentUser?.imageUrl + ')' }"></div>
+    <mat-card-subtitle>Apodo: {{ currentUser?.nickname }}</mat-card-subtitle>
+    <mat-card-subtitle>Nombre: {{ currentUser?.name }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="chat-messages">
+    <div *ngFor="let msg of messages" class="chat-message" [ngClass]="{ 'own-message': msg.user.nickname === currentUser?.nickname}">
+      <div class="message-header">
+        <div mat-card-avatar class="user-avatar-message" [ngStyle]="{ 'background-image': 'url(' + msg.user.imageUrl + ')' }"></div>
+        <strong>{{ msg.user.nickname }}</strong>
+        <span class="timestamp">{{ msg.createOn | date: 'shortTime' }}</span>
+      </div>
+      <div class="message-body">{{ msg.contentMessage }}</div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="chat-input">
+    <mat-form-field appearance="outline" class="input-field">
+      <mat-label>Escribe un mensaje</mat-label>
+      <input matInput [(ngModel)]="message" (keyup.enter)="sendMessage()" />
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="sendMessage()">
+      <mat-icon>send</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

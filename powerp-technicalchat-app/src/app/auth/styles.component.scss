@@ -1,0 +1,34 @@
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+
+  mat-card {
+    width: 400px;
+    padding: 1rem;
+  }
+
+  .image-catalog {
+    margin: 1rem 0;
+
+    .image-options {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+
+      img.avatar-option {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border-color 0.2s;
+
+        &.selected {
+          border-color: #172eae;
+        }
+      }
+    }
+  }
+}
